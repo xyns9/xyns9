@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rangkuman + Soal Biologi XI – SAF Genap</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap');
+
+  :root {
+    --bg: #0d1117;
+    --card: #161b22;
+    --border: #30363d;
+    --accent: #58a6ff;
+    --green: #3fb950;
+    --yellow: #f0b429;
+    --red: #f85149;
+    --purple: #a371f7;
+    --orange: #ffa657;
+    --text: #e6edf3;
+    --muted: #8b949e;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Sora', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    padding: 0 0 60px;
+  }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #0d1117 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 40px 24px 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(88,166,255,0.08) 0%, transparent 70%);
+  }
+  .header h1 {
+    font-size: 22px; font-weight: 700; letter-spacing: -0.5px;
+    color: var(--accent); position: relative;
+  }
+  .header p { color: var(--muted); font-size: 12px; margin-top: 6px; position: relative; }
+  .badge-row { display: flex; gap: 8px; justify-content: center; margin-top: 14px; flex-wrap: wrap; }
+  .badge {
+    background: rgba(88,166,255,0.1); border: 1px solid rgba(88,166,255,0.3);
+    color: var(--accent); font-size: 11px; padding: 3px 10px; border-radius: 20px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* TABS */
+  .tabs {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(13,17,23,0.95); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    display: flex; overflow-x: auto; padding: 0 16px; gap: 0;
+    scrollbar-width: none;
+  }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab {
+    padding: 12px 16px; font-size: 12px; font-weight: 600; white-space: nowrap;
+    cursor: pointer; border-bottom: 2px solid transparent; color: var(--muted);
+    transition: all 0.2s; background: none; border-top: none; border-left: none; border-right: none;
+    font-family: 'Sora', sans-serif;
+  }
+  .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+  .tab:hover { color: var(--text); }
+
+  /* CONTENT */
+  .content { max-width: 800px; margin: 0 auto; padding: 0 16px; }
+  .section { display: none; padding-top: 28px; }
+  .section.active { display: block; }
+
+  /* RANGKUMAN */
+  .topic-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; margin-bottom: 14px; overflow: hidden;
+  }
+  .topic-header {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 16px; cursor: pointer;
+    background: rgba(255,255,255,0.02);
+    user-select: none;
+  }
+  .topic-header:hover { background: rgba(255,255,255,0.04); }
+  .topic-num {
+    background: rgba(88,166,255,0.15); color: var(--accent);
+    font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600;
+    padding: 2px 8px; border-radius: 4px; min-width: 32px; text-align: center;
+    flex-shrink: 0;
+  }
+  .topic-title { font-size: 13px; font-weight: 600; flex: 1; }
+  .topic-arrow { color: var(--muted); font-size: 10px; transition: transform 0.2s; }
+  .topic-card.open .topic-arrow { transform: rotate(180deg); }
+  .topic-body {
+    display: none; padding: 0 16px 14px; border-top: 1px solid var(--border);
+    animation: fadeIn 0.2s ease;
+  }
+  .topic-card.open .topic-body { display: block; }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+
+  .kisi-tag {
+    font-size: 10px; color: var(--muted); font-family: 'IBM Plex Mono', monospace;
+    margin: 10px 0 8px; letter-spacing: 0.5px;
+  }
+
+  table {
+    width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 12.5px;
+  }
+  th {
+    background: rgba(88,166,255,0.1); color: var(--accent);
+    padding: 7px 10px; text-align: left; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.5px; text-transform: uppercase;
+  }
+  td {
+    padding: 7px 10px; border-bottom: 1px solid rgba(48,54,61,0.5);
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+
+  .point { display: flex; gap: 8px; margin: 5px 0; align-items: flex-start; font-size: 13px; }
+  .dot { color: var(--accent); margin-top: 2px; flex-shrink: 0; }
+  .green-dot { color: var(--green); }
+  .yellow-dot { color: var(--yellow); }
+  .red-dot { color: var(--red); }
+  .purple-dot { color: var(--purple); }
+  .orange-dot { color: var(--orange); }
+
+  .highlight {
+    background: rgba(240,180,41,0.1); border-left: 3px solid var(--yellow);
+    padding: 8px 12px; border-radius: 0 6px 6px 0; margin: 8px 0; font-size: 12.5px;
+  }
+  .info-box {
+    background: rgba(88,166,255,0.08); border: 1px solid rgba(88,166,255,0.2);
+    padding: 10px 12px; border-radius: 6px; margin: 8px 0; font-size: 12.5px;
+  }
+
+  /* SOAL */
+  .soal-item {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; margin-bottom: 12px; padding: 16px;
+  }
+  .soal-q {
+    font-size: 13px; font-weight: 600; margin-bottom: 10px; line-height: 1.6;
+  }
+  .soal-num {
+    color: var(--accent); font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px; margin-right: 6px;
+  }
+  .options { display: flex; flex-direction: column; gap: 6px; }
+  .opt {
+    display: flex; gap: 8px; align-items: flex-start;
+    padding: 7px 10px; border-radius: 6px; cursor: pointer;
+    border: 1px solid transparent; transition: all 0.15s; font-size: 12.5px;
+  }
+  .opt:hover { background: rgba(255,255,255,0.04); border-color: var(--border); }
+  .opt.selected { background: rgba(88,166,255,0.1); border-color: rgba(88,166,255,0.4); }
+  .opt.correct { background: rgba(63,185,80,0.1); border-color: var(--green); }
+  .opt.wrong { background: rgba(248,81,73,0.1); border-color: var(--red); }
+  .opt-label {
+    font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600;
+    min-width: 18px; margin-top: 1px; flex-shrink: 0;
+  }
+  .opt.selected .opt-label { color: var(--accent); }
+  .opt.correct .opt-label { color: var(--green); }
+  .opt.wrong .opt-label { color: var(--red); }
+
+  .answer-reveal {
+    display: none; margin-top: 10px;
+    background: rgba(63,185,80,0.08); border: 1px solid rgba(63,185,80,0.25);
+    padding: 10px 12px; border-radius: 6px; font-size: 12px; line-height: 1.6;
+  }
+  .answer-reveal.show { display: block; }
+  .answer-reveal strong { color: var(--green); }
+
+  .soal-actions { display: flex; gap: 8px; margin-top: 10px; }
+  .btn-check, .btn-reset {
+    font-family: 'Sora', sans-serif; font-size: 11px; font-weight: 600;
+    padding: 6px 14px; border-radius: 6px; cursor: pointer; border: none;
+    transition: all 0.15s;
+  }
+  .btn-check {
+    background: rgba(88,166,255,0.15); color: var(--accent);
+    border: 1px solid rgba(88,166,255,0.3);
+  }
+  .btn-check:hover { background: rgba(88,166,255,0.25); }
+  .btn-reset {
+    background: rgba(139,148,158,0.1); color: var(--muted);
+    border: 1px solid rgba(139,148,158,0.2);
+  }
+  .btn-reset:hover { background: rgba(139,148,158,0.18); }
+
+  /* SCORE BAR */
+  .score-bar {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 16px; margin-bottom: 20px;
+    display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    flex-wrap: wrap;
+  }
+  .score-info { font-size: 13px; }
+  .score-num { font-size: 28px; font-weight: 700; color: var(--accent); font-family: 'IBM Plex Mono', monospace; }
+  .score-label { font-size: 11px; color: var(--muted); }
+  .progress-track {
+    flex: 1; min-width: 140px; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden;
+  }
+  .progress-fill { height: 100%; background: var(--green); border-radius: 3px; transition: width 0.4s; width: 0%; }
+  .btn-all-check {
+    background: rgba(63,185,80,0.15); color: var(--green);
+    border: 1px solid rgba(63,185,80,0.3); font-family: 'Sora', sans-serif;
+    font-size: 11px; font-weight: 600; padding: 8px 16px; border-radius: 6px; cursor: pointer;
+  }
+  .btn-all-check:hover { background: rgba(63,185,80,0.25); }
+
+  h3 { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin: 18px 0 10px; }
+
+  b { color: var(--yellow); }
+  .accent { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📚 Biologi Kelas XI — SAF Semester Genap</h1>
+  <p>Sumber: Buku Biologi SMA/MA Kelas XI Kemdikbudristek 2022</p>
+  <div class="badge-row">
+    <span class="badge">40 Kisi-kisi</span>
+    <span class="badge">Rangkuman Lengkap</span>
+    <span class="badge">40 Soal Latihan</span>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="showSection('rangkuman', this)">📖 Rangkuman</button>
+  <button class="tab" onclick="showSection('soal', this)">✏️ Soal Latihan</button>
+</div>
+
+<!-- ===================== RANGKUMAN ===================== -->
+<div class="content">
+<div id="rangkuman" class="section active">
+
+<h3>Sistem Pernapasan (Kisi 1–5)</h3>
+
+<!-- 1 -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggleCard(this)">
+    <span class="topic-num">1</span>
+    <span class="topic-title">Fungsi Hidung, Trakea, Alveolus, Otot Diafragma</span>
+    <span class="topic-arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <table>
+      <tr><th>Organ</th><th>Fungsi</th></tr>
+      <tr><td><b>Hidung (Rongga Hidung)</b></td><td>Menyaring udara (rambut hidung + lendir), menghangatkan & melembapkan udara, mendeteksi bau (reseptor olfaktori)</td></tr>
+      <tr><td><b>Trakea (Tenggorokan)</b></td><td>Menyalurkan udara ke paru-paru; dinding berlapisan silia & lendir untuk menyaring kotoran; ditopang cincin tulang rawan</td></tr>
+      <tr><td><b>Alveolus</b></td><td>Tempat pertukaran gas O₂ dan CO₂ secara difusi; dinding selapis sel epitel pipih yang tipis + lembap (surfaktan); dikelilingi kapiler darah; makrofag menjaga kebersihan alveolus</td></tr>
+      <tr><td><b>Otot Diafragma</b></td><td>Berkontraksi → mendatar → rongga dada membesar → udara masuk (inspirasi). Berelaksasi → melengkung ke atas → rongga dada mengecil → udara keluar (ekspirasi)</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- 2 -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggleCard(this)">
+    <span class="topic-num">2</span>
+    <span class="topic-title">Pernapasan Inspirasi & Ekspirasi</span>
+    <span class="topic-arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <table>
+      <tr><th>Fase</th><th>Proses Otot</th><th>Hasil</th></tr>
+      <tr><td><b>Inspirasi</b></td><td>Diafragma kontraksi (mendatar) + otot antar tulang rusuk luar kontraksi → tulang rusuk terangkat</td><td>Rongga dada membesar → tekanan dalam paru ↓ → udara masuk</td></tr>
+      <tr><td><b>Ekspirasi</b></td><td>Diafragma relaksasi (melengkung ke atas) + otot antar tulang rusuk dalam kontraksi → tulang rusuk turun</td><td>Rongga dada mengecil → tekanan dalam paru ↑ → udara keluar</td></tr>
+    </table>
+    <div class="highlight">Pernapasan dada: otot antar tulang rusuk dominan. Pernapasan perut: otot diafragma dominan.</div>
+  </div>
+</div>
+
+<!-- 3 -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggleCard(this)">
+    <span class="topic-num">3</span>
+    <span class="topic-title">Volume Cadangan Inspirasi & Ekspirasi</span>
+    <span class="topic-arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <table>
+      <tr><th>Istilah</th><th>Definisi</th><th>Nilai Normal</th></tr>
+      <tr><td><b>Volume Tidal (VT)</b></td><td>Udara masuk/keluar saat bernapas normal</td><td>±500 mL</td></tr>
+      <tr><td><b>Volume Cadangan Inspirasi (VCI)</b></td><td>Udara tambahan yang bisa dihirup kuat-kuat setelah inspirasi normal</td><td>±3.000 mL</td></tr>
+      <tr><td><b>Volume Cadangan Ekspirasi (VCE)</b></td><td>Udara tambahan yang bisa dikeluarkan kuat-kuat setelah ekspirasi normal</td><td>±1.100 mL</td></tr>
+      <tr><td><b>Volume Residu</b></td><td>Udara yang selalu tersisa di paru, tidak bisa dikeluarkan</td><td>±1.200 mL</td></tr>
+      <tr><td><b>Kapasitas Vital</b></td><td>VT + VCI + VCE (udara maksimum yang bisa masuk/keluar)</td><td>±4.600 mL</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- 4 -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggleCard(this)">
+    <span class="topic-num">4</span>
+    <span class="topic-title">Faktor Frekuensi Pernapasan</span>
+    <span class="topic-arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <div class="point"><span class="dot">▸</span><span><b>Aktivitas fisik:</b> semakin aktif → laju metabolisme ↑ → frekuensi napas ↑</span></div>
+    <div class="point"><span class="dot">▸</span><span><b>Jenis kelamin:</b> laki-laki umumnya lebih rendah karena massa otot & hormonal berbeda</span></div>
+    <div class="point"><span class="dot">▸</span><span><b>Usia:</b> bayi bernapas lebih cepat dari orang dewasa</span></div>
+    <div class="point"><span class="dot">▸</span><span><b>Suhu tubuh:</b> suhu tinggi (demam) → frekuensi napas meningkat</span></div>
+    <div class="point"><span class="dot">▸</span><span><b>Kadar CO₂ darah:</b> CO₂ tinggi → medula oblongata merangsang otot napas → frekuensi ↑</span></div>
+    <div class="point"><span class="dot">▸</span><span><b>Posisi tubuh:</b> berbaring → frekuensi lebih rendah dari berdiri/duduk</span></div>
+    <div class="highlight">Normal dewasa istirahat: 12–20 napas/menit</div>
+  </div>
+</div>
+
+<!-- 5 -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggleCard(this)">
+    <span class="topic-num">5</span>
+    <span class="topic-title">TBC & Asma</span>
+    <span class="topic-arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <table>
+      <tr><th></th><th>TBC (Tuberkulosis)</th><th>Asma</th></tr>
+      <tr><td><b>Penyebab</b></td><td>Infeksi bakteri <i>Mycobacterium tuberculosis</i></td><td>Hipersensitivitas saluran napas; alergi, debu, polusi, stres</td></tr>
+      <tr><td><b>Bagian terdampak</b></td><td>Paru-paru (bisa organ lain)</td><td>Bronkus & bronkiolus</td></tr>
+      <tr><td><b>Gejala</b></td><td>Batuk berkepanjangan, batuk darah, demam, keringat malam</td><td>Sesak napas, mengi (wheezing), dada terasa berat</td></tr>
+      <tr><td><b>Dampak pertukaran gas</b></td><td>Terganggu karena batuk terus-menerus + kerusakan alveolus</td><td>Penyempitan bronkus → udara sulit masuk/keluar</td></tr>
+      <tr><td><b>Penularan</b></td><td>Droplet udara (menular)</td><td>Tidak menular</td></tr>
+    </table>
+  </div>
+</div>
+
+<h3>Sistem Peredaran Darah (Kisi 6–11)</h3>
+
+<!-- 6 -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggleCard(this)">
+    <span class="topic-num">6</span>
+    <span class="topic-title">Ciri Eritrosit & Trombosit</span>
+    <span class="topic-arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <table>
+      <tr><th>Ciri</th><th>Eritrosit (Sel Darah Merah)</th><th>Trombosit (Keping Darah)</th></tr>
+      <tr><td><b>Bentuk</b></td><td>Bikonkaf (cekung dua sisi), tidak berinti</td><td>Tidak beraturan/lonjong, tidak berinti</td></tr>
+      <tr><td><b>Ukuran</b></td><td>±7–8 µm</td><td>±2–4 µm (lebih kecil)</td></tr>
+      <tr><td><b>Jumlah</b></td><td>4–5 juta/mm³</td><td>150.000–400.000/mm³</td></tr>
+      <tr><td><b>Kandungan</b></td><td>Hemoglobin (Hb) untuk mengikat O₂ dan CO₂</td><td>Mengandung faktor pembekuan darah</td></tr>
+      <tr><td><b>Fungsi utama</b></td><td>Mengangkut O₂ dari paru ke jaringan & CO₂ sebaliknya</td><td>Membantu pembekuan darah saat luka</td></tr>
+      <tr><td><b>Masa hidup</b></td><td>±120 hari, dibentuk di sumsum tulang merah</td><td>±5–9 hari</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- 7 -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggleCard(this)">
+    <span class="topic-num">7</span>
+    <span class="topic-title">Fungsi Leukosit (Sel Darah Putih)</span>
+    <span class="topic-arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <div class="info-box">Leukosit berinti, tidak berwarna, jumlah 5.000–10.000/mm³ — merupakan komponen utama sistem imun tubuh.</div>
+    <table>
+      <tr><th>Jenis Leukosit</th><th>Fungsi Spesifik</th></tr>
+      <tr><td><b>Neutrofil</b></td><td>Fagositosis (memakan) bakteri; pertahanan pertama melawan infeksi</td></tr>
+      <tr><td><b>Limfosit</b></td><td>Membentuk antibodi (limfosit B) dan mematikan sel terinfeksi virus (limfosit T)</td></tr>
+      <tr><td><b>Monosit</b></td><td>Berkembang menjadi makrofag; fagositosis kuman dan sel mati</td></tr>
+      <tr><td><b>Eosinofil</b></td><td>Melawan parasit dan berperan dalam reaksi alergi</td></tr>
+      <tr><td><b>Basofil</b></td><td>Melepaskan histamin saat reaksi alergi/peradangan</td></tr>
+    </table>
+    <div class="highlight">Makrofag di alveolus juga termasuk turunan leukosit — bersifat amoeboid, menangkap kuman di paru.</div>
+  </div>
+</div>
+
+<!-- 8 -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggleCard(this)">
+    <span class="topic-num">8</span>
+    <span class="topic-title">Bagan Proses Pembekuan Darah</span>
+    <span class="topic-arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <div class="info-box">
+      Urutan pembekuan darah (koagulasi):<br><br>
+      <b>Luka → Trombosit pecah → melepas Trombokinase</b><br>
+      ↓<br>
+      <b>Trombokinase + ion Ca²⁺ + Vit K</b><br>
+      ↓<br>
+      <b>Protrombin → Trombin</b><br>
+      ↓<br>
+      <b>Fibrinogen → Fibrin</b><br>
+      ↓<br>
+      <b>Fibrin membentuk jaring-jaring → luka tertutup (bekuan darah)</b>
+    </div>
+    <div class="point"><span class="yellow-dot">▸</span><span>Protrombin & fibrinogen diproduksi oleh hati</span></div>
+    <div class="point"><span class="yellow-dot">▸</span><span>Vitamin K penting untuk sintesis protrombin</span></div>
+    <div class="point"><span class="yellow-dot">▸</span><span>Ion Ca²⁺ berperan sebagai kofaktor dalam proses ini</span></div>
+  </div>
+</div>
+
+<!-- 9 -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggleCard(this)">
+    <span class="topic-num">9</span>
+    <span class="topic-title">Antigen & Antibodi pada Golongan Darah</span>
+    <span class="topic-arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <table>
+      <tr><th>Golongan</th><th>Antigen di Eritrosit</th><th>Antibodi di Plasma</th></tr>
+      <tr><td><b>A</b></td><td>Antigen A</td><td>Antibodi B (anti-B)</td></tr>
+      <tr><td><b>B</b></td><td>Antigen B</td><td>Antibodi A (anti-A)</td></tr>
+      <tr><td><b>AB</b></td><td>Antigen A dan B</td><td>Tidak ada (tidak punya antibodi anti-A atau anti-B)</td></tr>
+      <tr><td><b>O</b></td><td>Tidak ada antigen</td><td>Antibodi A dan B (punya keduanya)</td></tr>
+    </table>
+    <div class="highlight">Golongan O = donor universal (bisa donor ke semua). Golongan AB = resipien universal (bisa menerima dari semua).</div>
+    <div class="point"><span class="dot">▸</span><span><b>Faktor Rhesus (Rh):</b> Rh+ punya antigen Rh di eritrosit; Rh– tidak. Penting dalam kehamilan ibu Rh– dengan janin Rh+.</span></div>
+  </div>
+</div>
+
+<!-- 10 -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggleCard(this)">
+    <span class="topic-num">10</span>
+    <span class="topic-title">Ciri Pembuluh Arteri</span>
+    <span class="topic-arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <table>
+      <tr><th>Ciri</th><th>Arteri</th><th>Vena (pembanding)</th></tr>
+      <tr><td><b>Arah aliran</b></td><td>Dari jantung ke seluruh tubuh</td><td>Dari seluruh tubuh ke jantung</td></tr>
+      <tr><td><b>Kandungan O₂</b></td><td>Kaya oksigen (kecuali arteri pulmonalis)</td><td>Kaya CO₂ (kecuali vena pulmonalis)</td></tr>
+      <tr><td><b>Dinding</b></td><td>Tebal, elastis, banyak otot polos</td><td>Tipis, kurang elastis</td></tr>
+      <tr><td><b>Katup</b></td><td>Tidak ada (kecuali katup aorta)</td><td>Ada katup untuk mencegah aliran balik</td></tr>
+      <tr><td><b>Tekanan</b></td><td>Tinggi (berdenyut)</td><td>Rendah</td></tr>
+      <tr><td><b>Posisi</b></td><td>Di dalam tubuh, jauh dari permukaan</td><td>Dekat permukaan kulit (terlihat)</td></tr>
+    </table>
+    <div class="info-box">Struktur dinding arteri: endotelium (dalam) → lapisan otot polos → lapisan jaringan ikat (luar)</div>
+  </div>
+</div>
+
+<!-- 11 -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggleCard(this)">
+    <span class="topic-num">11</span>
+    <span class="topic-title">Ruang pada Jantung</span>
+    <span class="topic-arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <table>
+      <tr><th>Ruang</th><th>Fungsi</th></tr>
+      <tr><td><b>Atrium Kanan</b></td><td>Menerima darah dari seluruh tubuh (miskin O₂) melalui vena kava superior & inferior</td></tr>
+      <tr><td><b>Ventrikel Kanan</b></td><td>Memompa darah ke paru-paru (melalui arteri pulmonalis) untuk pertukaran gas</td></tr>
+      <tr><td><b>Atrium Kiri</b></td><td>Menerima darah kaya O₂ dari paru-paru (melalui vena pulmonalis)</td></tr>
+      <tr><td><b>Ventrikel Kiri</b></td><td>Memompa darah kaya O₂ ke seluruh tubuh (melalui aorta) — dindingnya paling tebal</td></tr>
+    </table>
+    <div class="highlight">Katup: Bikuspidalis (mitral) antara atrium–ventrikel kiri. Trikuspidalis antara atrium–ventrikel kanan. Katup semilunar di pangkal aorta & arteri pulmonalis.</div>
+  </div>
+</div>
+
+<h3>Sistem Ekskresi (Kisi 12–17)</h3>
+
+<!-- 12 -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggleCard(this)">
+    <span class="topic-num">12 & 13</span>
+    <span class="topic-title">Organ Ekskresi & Zat Sisa yang Dikeluarkan</span>
+    <span class="topic-arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <table>
+      <tr><th>Organ</th><th>Zat yang Dikeluarkan</th></tr>
+      <tr><td><b>Ginjal</b></td><td>Urin (mengandung urea, air, garam, kreatinin, amonia)</td></tr>
+      <tr><td><b>Paru-paru</b></td><td>CO₂ dan uap air (H₂O)</td></tr>
+      <tr><td><b>Kulit</b></td><td>Keringat (air, garam, urea sedikit)</td></tr>
+      <tr><td><b>Hati</b></td><td>Mengubah amonia → urea; menghasilkan empedu (pigmen bilirubin dari hemoglobin tua)</td></tr>
+    </table>
+    <div class="info-box">Zat sisa metabolisme = CO₂ (respirasi seluler), urea (penguraian protein), air, garam mineral berlebih, pigmen empedu.</div>
+  </div>
+</div>
+
+<!-- 14 -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggleCard(this)">
+    <span class="topic-num">14</span>
+    <span class="topic-title">Fungsi Bagian Nefron Ginjal</span>
+    <span class="topic-arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <table>
+      <tr><th>Bagian Nefron</th><th>Proses</th><th>Fungsi</th></tr>
+      <tr><td><b>Glomerulus</b></td><td>Filtrasi</td><td>Menyaring darah: protein & sel darah tetap di kapiler; air, garam, glukosa, urea masuk ke kapsul → urin primer</td></tr>
+      <tr><td><b>Kapsul Bowman</b></td><td>Menampung</td><td>Menampung hasil filtrasi dari glomerulus</td></tr>
+      <tr><td><b>Tubulus Proksimal</b></td><td>Reabsorpsi</td><td>Menyerap kembali glukosa, asam amino, air, ion Na⁺ ke darah</td></tr>
+      <tr><td><b>Lengkung Henle</b></td><td>Reabsorpsi</td><td>Mengatur keseimbangan air & konsentrasi urin</td></tr>
+      <tr><td><b>Tubulus Distal</b></td><td>Augmentasi</td><td>Menambahkan zat sisa & ion berlebih ke cairan tubulus</td></tr>
+      <tr><td><b>Duktus Pengumpul</b></td><td>Augmentasi + reabsorpsi air</td><td>Mengumpulkan urin sekunder → urin sesungguhnya menuju pelvis ginjal</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- 15 -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggleCard(this)">
+    <span class="topic-num">15</span>
+    <span class="topic-title">Uji Benedict & Biuret pada Uji Urine</span>
+    <span class="topic-arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <table>
+      <tr><th>Uji</th><th>Untuk Mendeteksi</th><th>Hasil Normal Urine</th><th>Hasil Abnormal</th></tr>
+      <tr><td><b>Benedict</b></td><td>Glukosa (gula pereduksi)</td><td>Tetap biru (tidak ada glukosa)</td><td>Merah bata/oranye → ada glukosa → indikasi diabetes mellitus / kerusakan glomerulus</td></tr>
+      <tr><td><b>Biuret</b></td><td>Protein</td><td>Tetap biru (tidak ada protein)</td><td>Berubah ungu/violet → ada protein (proteinuria) → indikasi kerusakan glomerulus / nefritis</td></tr>
+    </table>
+    <div class="highlight">Urine normal tidak mengandung glukosa atau protein karena sudah direabsorpsi di tubulus proksimal.</div>
+  </div>
+</div>
+
+<!-- 16-17 -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggleCard(this)">
+    <span class="topic-num">16-17</span>
+    <span class="topic-title">Kelenjar Keringat & Penyebab Biang Keringat</span>
+    <span class="topic-arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <div class="point"><span class="dot">▸</span><span><b>Kelenjar keringat (sudorifera)</b> terdapat di lapisan dermis kulit, salurannya berliku menembus epidermis menuju pori-pori.</span></div>
+    <div class="point"><span class="dot">▸</span><span><b>Komposisi keringat:</b> air, NaCl (garam), urea, asam laktat sedikit.</span></div>
+    <div class="point"><span class="dot">▸</span><span><b>Keringat diatur oleh saraf otonom</b> saat suhu tubuh/lingkungan meningkat.</span></div>
+    <br>
+    <div class="highlight"><b>Biang Keringat (Miliaria):</b> terjadi saat saluran kelenjar keringat tersumbat di bawah permukaan kulit akibat cuaca panas + lembap → keringat terperangkap → peradangan → bintil-bintil merah gatal. Faktor: pakaian tidak menyerap, keringat berlebih, kulit tidak bersih.</div>
+  </div>
+</div>
+
+<h3>Sistem Saraf (Kisi 18–23)</h3>
+
+<!-- 18 -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggleCard(this)">
+    <span class="topic-num">18</span>
+    <span class="topic-title">Fungsi Nodus Ranvier</span>
+    <span class="topic-arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <div class="point"><span class="dot">▸</span><span><b>Nodus Ranvier</b> adalah celah/ruas sempit di sepanjang selubung mielin pada akson neuron.</span></div>
+    <div class="point"><span class="dot">▸</span><span><b>Fungsi utama:</b> mempercepat penghantaran impuls saraf melalui mekanisme <b>konduksi saltatori</b> — impuls "melompat" dari satu nodus ke nodus berikutnya.</span></div>
+    <div class="point"><span class="dot">▸</span><span>Akson bermielin + nodus ranvier = penghantaran impuls jauh lebih cepat (hingga 120 m/s) dibanding akson tanpa mielin.</span></div>
+    <div class="info-box">Selubung mielin dibentuk oleh sel Schwann (sistem saraf tepi) atau oligodendrosit (SSP). Mielin bersifat isolator listrik, sehingga impuls hanya terjadi di nodus ranvier.</div>
+  </div>
+</div>
+
+<!-- 19 -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggleCard(this)">
+    <span class="topic-num">19</span>
+    <span class="topic-title">Sinapsis</span>
+    <span class="topic-arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <div class="point"><span class="dot">▸</span><span><b>Sinapsis</b> adalah celah antara ujung akson satu neuron (presinaps) dengan dendrit/badan sel neuron lain (postsinaps).</span></div>
+    <div class="point"><span class="dot">▸</span><span><b>Proses:</b> impuls mencapai ujung akson → vesikel sinaptik melepaskan <b>neurotransmiter</b> ke celah sinaps → neurotransmiter berdifusi → terikat reseptor di membran postsinaps → impuls dilanjutkan (atau dihambat).</span></div>
+    <div class="point"><span class="dot">▸</span><span>Contoh neurotransmiter: <b>asetilkolin</b> (saraf motor), dopamin, serotonin, norepinefrin.</span></div>
+    <div class="highlight">Sinapsis hanya berjalan SATU ARAH: presinaps → postsinaps (karena neurotransmiter hanya dilepas di presinaps dan reseptor ada di postsinaps).</div>
+  </div>
+</div>
+
+<!-- 20 -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggleCard(this)">
+    <span class="topic-num">20</span>
+    <span class="topic-title">Contoh Gerak Sadar & Gerak Refleks</span>
+    <span class="topic-arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <table>
+      <tr><th></th><th>Gerak Sadar</th><th>Gerak Refleks</th></tr>
+      <tr><td><b>Lintasan impuls</b></td><td>Reseptor → saraf sensorik → otak → saraf motorik → efektor</td><td>Reseptor → saraf sensorik → sumsum tulang belakang/batang otak → saraf motorik → efektor</td></tr>
+      <tr><td><b>Sifat</b></td><td>Disadari, disengaja, bisa dikontrol</td><td>Tidak disadari, otomatis, cepat</td></tr>
+      <tr><td><b>Contoh</b></td><td>Menulis, mengambil baju, berjalan, bicara</td><td>Mengedipkan mata terkena debu, menarik tangan dari benda panas, refleks lutut (patella), bersin, batuk</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- 21-22 -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggleCard(this)">
+    <span class="topic-num">21-22</span>
+    <span class="topic-title">Nama Bagian Cerebrum & Fungsi Cerebellum</span>
+    <span class="topic-arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <b class="kisi-tag">SEREBRUM (OTAK BESAR)</b>
+    <div class="point"><span class="dot">▸</span><span>Bagian terbesar otak; mengontrol aktivitas sensorik, motorik, dan kecerdasan.</span></div>
+    <table>
+      <tr><th>Lobus Cerebrum</th><th>Fungsi</th></tr>
+      <tr><td><b>Lobus Frontal</b></td><td>Kepribadian, pengambilan keputusan, gerakan volunter, bicara (area Broca)</td></tr>
+      <tr><td><b>Lobus Parietal</b></td><td>Menerima & memproses rangsang sensorik (sentuhan, rasa sakit, suhu)</td></tr>
+      <tr><td><b>Lobus Temporal</b></td><td>Pendengaran, memori, pemahaman bahasa (area Wernicke)</td></tr>
+      <tr><td><b>Lobus Oksipital</b></td><td>Penglihatan & interpretasi visual</td></tr>
+    </table>
+    <b class="kisi-tag">SEREBELUM (OTAK KECIL)</b>
+    <div class="point"><span class="green-dot">▸</span><span><b>Mempertahankan tonus otot</b></span></div>
+    <div class="point"><span class="green-dot">▸</span><span><b>Mengkoordinasikan gerakan otot</b> agar halus dan terkoordinasi</span></div>
+    <div class="point"><span class="green-dot">▸</span><span><b>Mengontrol keseimbangan</b> posisi tubuh</span></div>
+    <div class="highlight">Kerusakan serebelum → ataksia (gangguan koordinasi gerak & keseimbangan)</div>
+  </div>
+</div>
+
+<!-- 23 -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggleCard(this)">
+    <span class="topic-num">23</span>
+    <span class="topic-title">Meningitis</span>
+    <span class="topic-arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <div class="point"><span class="red-dot">▸</span><span><b>Meningitis</b> adalah peradangan selaput pembungkus otak dan sumsum tulang belakang (meningen: durameter, arachnoid, piameter).</span></div>
+    <div class="point"><span class="red-dot">▸</span><span><b>Penyebab:</b> bakteri (<i>Neisseria meningitidis</i>, <i>Streptococcus pneumoniae</i>) atau virus.</span></div>
+    <div class="point"><span class="red-dot">▸</span><span><b>Gejala:</b> demam tinggi, sakit kepala hebat, kaku leher, sensitif terhadap cahaya, kejang, penurunan kesadaran.</span></div>
+    <div class="point"><span class="red-dot">▸</span><span><b>Berbahaya:</b> bisa menyebabkan kerusakan saraf permanen atau kematian jika tidak segera ditangani.</span></div>
+  </div>
+</div>
+
+<h3>Alat Indera (Kisi 24–29)</h3>
+
+<!-- 24 -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggleCard(this)">
+    <span class="topic-num">24</span>
+    <span class="topic-title">Fungsi Lensa, Retina, Alis, dan Kelopak Mata</span>
+    <span class="topic-arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <table>
+      <tr><th>Bagian</th><th>Fungsi</th></tr>
+      <tr><td><b>Lensa</b></td><td>Memfokuskan cahaya ke retina (akomodasi); bisa mencembung (dekat) atau memipih (jauh)</td></tr>
+      <tr><td><b>Retina</b></td><td>Lapisan paling dalam bola mata; mengandung sel fotoreseptor: <b>sel batang</b> (cahaya redup, hitam-putih) dan <b>sel kerucut</b> (cahaya terang, warna); mengirim sinyal ke otak via saraf optik</td></tr>
+      <tr><td><b>Alis</b></td><td>Mencegah keringat masuk ke mata; ekspresi wajah</td></tr>
+      <tr><td><b>Kelopak Mata</b></td><td>Melindungi mata dari debu/benda asing; membantu distribusi cairan (air mata) merata; refleks menutup saat bahaya</td></tr>
+    </table>
+    <div class="info-box">Sel di retina: sel batang, sel kerucut, sel bipolar, sel ganglion, sel amakrin, sel horizontal, sel epitel pigmen.</div>
+  </div>
+</div>
+
+<!-- 25-27 -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggleCard(this)">
+    <span class="topic-num">25-27</span>
+    <span class="topic-title">Reseptor Bau (Hidung), Peta Rasa & Reseptor Rasa (Lidah)</span>
+    <span class="topic-arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <b class="kisi-tag">HIDUNG — RESEPTOR BAU</b>
+    <div class="point"><span class="dot">▸</span><span>Reseptor bau = <b>sel olfaktori</b> di lapisan epitel olfaktori (bagian atas rongga hidung).</span></div>
+    <div class="point"><span class="dot">▸</span><span>Molekul bau (zat kimia menguap) → larut dalam lendir → mengaktifkan sel olfaktori → impuls ke otak (bulbus olfaktorius → lobus temporal).</span></div>
+
+    <b class="kisi-tag">LIDAH — PETA RASA (KLASIK)</b>
+    <table>
+      <tr><th>Rasa</th><th>Lokasi di Lidah (klasik)</th></tr>
+      <tr><td>Manis</td><td>Ujung lidah</td></tr>
+      <tr><td>Asin</td><td>Ujung + tepi depan lidah</td></tr>
+      <tr><td>Asam</td><td>Tepi samping lidah</td></tr>
+      <tr><td>Pahit</td><td>Pangkal/belakang lidah</td></tr>
+      <tr><td>Umami</td><td>Tersebar merata (modern)</td></tr>
+    </table>
+    <b class="kisi-tag">RESEPTOR RASA</b>
+    <div class="point"><span class="dot">▸</span><span><b>Sel pengecap (gustatory cells)</b> di dalam <b>kuncup pengecap (taste bud)</b> yang terdapat pada <b>papila lidah</b> (papila sirkumvalata, fungiformis, foliata).</span></div>
+    <div class="point"><span class="dot">▸</span><span>Zat kimia dalam makanan → larut dalam saliva → diterima reseptor di kuncup pengecap → impuls ke otak via saraf kranial VII dan IX.</span></div>
+  </div>
+</div>
+
+<!-- 28-29 -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggleCard(this)">
+    <span class="topic-num">28-29</span>
+    <span class="topic-title">Struktur Telinga & Peran Keseimbangan</span>
+    <span class="topic-arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <table>
+      <tr><th>Bagian</th><th>Nama</th><th>Fungsi</th></tr>
+      <tr><td><b>Telinga Luar</b></td><td>Daun telinga (aurikula), saluran telinga luar, membran timpani (gendang telinga)</td><td>Menangkap dan menyalurkan gelombang suara; membran timpani bergetar saat ada suara</td></tr>
+      <tr><td><b>Telinga Tengah</b></td><td>Tulang martil (maleus), landasan (inkus), sanggurdi (stapes)</td><td>Meneruskan dan memperkuat getaran dari gendang telinga ke telinga dalam</td></tr>
+      <tr><td><b>Telinga Dalam</b></td><td>Koklea (rumah siput)</td><td>Mengubah getaran menjadi impuls saraf (pendengaran); ada organ Corti berisi sel rambut</td></tr>
+      <tr><td><b>Telinga Dalam</b></td><td>Kanalis semisirkularis (3 saluran) + Utrikulus + Sakulus</td><td><b>Keseimbangan:</b> Kanalis semisirkularis → keseimbangan dinamis (rotasi kepala). Utrikulus & sakulus → keseimbangan statis (posisi tegak)</td></tr>
+    </table>
+    <div class="highlight">Cairan endolimfe di kanalis semisirkularis bergerak saat kepala berputar → menggerakkan kupula → mengaktifkan sel rambut → impuls ke serebelum.</div>
+  </div>
+</div>
+
+<h3>Sistem Gerak (Kisi 30–36)</h3>
+
+<!-- 30-31 -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggleCard(this)">
+    <span class="topic-num">30-31</span>
+    <span class="topic-title">Fungsi Rangka & Jenis Rangka</span>
+    <span class="topic-arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <b class="kisi-tag">FUNGSI RANGKA</b>
+    <div class="point"><span class="dot">▸</span><span>Penyokong/penopang tubuh</span></div>
+    <div class="point"><span class="dot">▸</span><span>Pelindung organ dalam (tengkorak → otak; tulang rusuk → jantung & paru)</span></div>
+    <div class="point"><span class="dot">▸</span><span>Tempat melekatnya otot (alat gerak pasif)</span></div>
+    <div class="point"><span class="dot">▸</span><span>Pembentukan sel darah (hemopoiesis) di sumsum tulang merah</span></div>
+    <div class="point"><span class="dot">▸</span><span>Cadangan mineral (kalsium & fosfor)</span></div>
+
+    <b class="kisi-tag">JENIS RANGKA</b>
+    <table>
+      <tr><th>Jenis</th><th>Contoh Tulang</th></tr>
+      <tr><td><b>Rangka Aksial</b> (tidak langsung bergerak)</td><td>Tengkorak, tulang belakang (vertebra), tulang dada (sternum), tulang rusuk (kosta)</td></tr>
+      <tr><td><b>Rangka Apendikular</b> (bergerak langsung)</td><td>Bahu (klavikula + skapula), lengan (humerus, radius, ulna), pinggul (ilium, ischium, pubis), tungkai (femur, patela, fibula, tibia, tarsal, metatarsal, falang)</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- 32 -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggleCard(this)">
+    <span class="topic-num">32</span>
+    <span class="topic-title">Bentuk Tulang & Jaringan pada Tulang</span>
+    <span class="topic-arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <table>
+      <tr><th>Bentuk Tulang</th><th>Contoh</th></tr>
+      <tr><td><b>Tulang panjang/pipa</b></td><td>Femur, humerus, tibia — ada rongga berisi sumsum</td></tr>
+      <tr><td><b>Tulang pendek</b></td><td>Karpal (pergelangan tangan), tarsal (pergelangan kaki)</td></tr>
+      <tr><td><b>Tulang pipih</b></td><td>Tengkorak, tulang dada, skapula — melindungi organ</td></tr>
+      <tr><td><b>Tulang tidak beraturan</b></td><td>Vertebra, tulang wajah</td></tr>
+    </table>
+    <b class="kisi-tag">JARINGAN PENYUSUN TULANG</b>
+    <table>
+      <tr><th>Jaringan</th><th>Ciri</th></tr>
+      <tr><td><b>Tulang Keras (Osteon/Kompak)</b></td><td>Padat, terdiri dari sistem Havers (kanal Havers + lamela); bagian luar tulang panjang</td></tr>
+      <tr><td><b>Tulang Spons (Trabekular)</b></td><td>Berpori seperti spons; di ujung tulang panjang dan tulang pipih; tempat sumsum tulang merah</td></tr>
+      <tr><td><b>Tulang Rawan (Kartilago)</b></td><td>Hialin (sendi, hidung, trakea); fibrosa (antar diskus vertebra); elastis (daun telinga)</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- 33 -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggleCard(this)">
+    <span class="topic-num">33</span>
+    <span class="topic-title">Nama Tulang di Tulang Belakang (Vertebra)</span>
+    <span class="topic-arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <table>
+      <tr><th>Nama</th><th>Jumlah</th><th>Letak</th></tr>
+      <tr><td><b>Serviks (C)</b></td><td>7</td><td>Leher; C1=atlas (menopang tengkorak), C2=aksis (rotasi kepala)</td></tr>
+      <tr><td><b>Torak/Toraks (T)</b></td><td>12</td><td>Punggung/dada; tempat melekatnya tulang rusuk</td></tr>
+      <tr><td><b>Lumbar (L)</b></td><td>5</td><td>Pinggang; tulang terbesar vertebra</td></tr>
+      <tr><td><b>Sakrum</b></td><td>5 (menyatu)</td><td>Panggul; menyatu membentuk 1 tulang</td></tr>
+      <tr><td><b>Koksigis (tulang ekor)</b></td><td>4 (menyatu)</td><td>Ujung paling bawah tulang belakang</td></tr>
+    </table>
+    <div class="highlight">Kelainan tulang belakang: Skoliosis (melengkung ke samping), Kifosis (bungkuk/melengkung ke belakang), Lordosis (melengkung ke depan di pinggang).</div>
+  </div>
+</div>
+
+<!-- 34 -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggleCard(this)">
+    <span class="topic-num">34</span>
+    <span class="topic-title">Sendi Engsel, Peluru, Pelana</span>
+    <span class="topic-arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <table>
+      <tr><th>Jenis Sendi</th><th>Gerakan</th><th>Contoh Lokasi</th></tr>
+      <tr><td><b>Sendi Engsel</b></td><td>Satu arah (seperti engsel pintu) — fleksi-ekstensi</td><td>Siku (humerus-ulna), lutut, pergelangan kaki</td></tr>
+      <tr><td><b>Sendi Peluru</b></td><td>Segala arah (bola dalam mangkuk) — gerak paling bebas</td><td>Bahu (humerus-skapula), pinggul (femur-pelvis)</td></tr>
+      <tr><td><b>Sendi Pelana</b></td><td>Dua arah (maju-mundur + kiri-kanan) seperti pelana kuda</td><td>Pangkal ibu jari tangan (karpal-metakarpal)</td></tr>
+      <tr><td><b>Sendi Putar</b></td><td>Rotasi — berputar pada satu poros</td><td>Antara C1-C2 (atlas-aksis), antara radius-ulna</td></tr>
+      <tr><td><b>Sendi Luncur/Geser</b></td><td>Geser satu bidang datar</td><td>Antar tulang karpal, antar tulang tarsal</td></tr>
+    </table>
+    <div class="info-box">Semua sendi di atas termasuk <b>Diartrosis</b> (sendi gerak bebas) — dilindungi cairan sinovial, ligamen, kapsul sendi.</div>
+  </div>
+</div>
+
+<!-- 35 -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggleCard(this)">
+    <span class="topic-num">35</span>
+    <span class="topic-title">Otot Jantung, Otot Polos, Otot Lurik</span>
+    <span class="topic-arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <table>
+      <tr><th>Ciri</th><th>Otot Lurik (Rangka)</th><th>Otot Polos</th><th>Otot Jantung</th></tr>
+      <tr><td><b>Penampakan</b></td><td>Bergaris melintang (lurik)</td><td>Polos, tidak bergaris</td><td>Bergaris, bercabang</td></tr>
+      <tr><td><b>Inti sel</b></td><td>Banyak, di tepi</td><td>1, di tengah</td><td>1–2, di tengah</td></tr>
+      <tr><td><b>Kontrol</b></td><td>Volunter (sadar)</td><td>Involunter (tidak sadar)</td><td>Involunter (tidak sadar)</td></tr>
+      <tr><td><b>Lokasi</b></td><td>Melekat pada rangka (otot bisep, trisep, dll.)</td><td>Organ dalam: usus, pembuluh darah, kandung kemih, rahim</td><td>Hanya di jantung</td></tr>
+      <tr><td><b>Kecepatan</b></td><td>Cepat berkontraksi, cepat lelah</td><td>Lambat, tahan lama</td><td>Ritmik, nonstop sepanjang hidup</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- 36 -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggleCard(this)">
+    <span class="topic-num">36</span>
+    <span class="topic-title">Membedakan Fraktur & Dislokasi</span>
+    <span class="topic-arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <table>
+      <tr><th></th><th>Fraktur (Patah Tulang)</th><th>Dislokasi</th></tr>
+      <tr><td><b>Definisi</b></td><td>Retakan/patahan pada tulang itu sendiri</td><td>Pergeseran tulang dari posisi normalnya di dalam sendi</td></tr>
+      <tr><td><b>Yang terdampak</b></td><td>Jaringan tulang</td><td>Sendi (hubungan antar tulang)</td></tr>
+      <tr><td><b>Jenis Fraktur</b></td><td>Sederhana (tidak melukai jaringan sekitar) vs Kompleks (melukai otot/organ sekitar)</td><td>—</td></tr>
+      <tr><td><b>Penyebab</b></td><td>Trauma/benturan keras, osteoporosis</td><td>Gerak tiba-tiba berlebihan pada sendi, trauma</td></tr>
+    </table>
+    <div class="info-box">Gangguan persendian lain: Terkilir = tertariknya ligamen karena gerakan tiba-tiba. Artritis = peradangan sendi (rhematoid, osteoartritis, gout).</div>
+  </div>
+</div>
+
+<h3>Sistem Reproduksi (Kisi 37–40)</h3>
+
+<!-- 37-38 -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggleCard(this)">
+    <span class="topic-num">37-38</span>
+    <span class="topic-title">Fungsi Testis, Penis, Skrotum, Epididimis & Struktur Sel Sperma</span>
+    <span class="topic-arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <table>
+      <tr><th>Organ</th><th>Fungsi</th></tr>
+      <tr><td><b>Testis</b></td><td>Menghasilkan spermatozoa (spermatogenesis) di tubulus seminiferus; menghasilkan hormon testosteron</td></tr>
+      <tr><td><b>Skrotum</b></td><td>Kantung pembungkus testis di luar tubuh; mengatur suhu testis (lebih dingin dari suhu tubuh) agar spermatogenesis optimal; berisi otot dartos & kremaster</td></tr>
+      <tr><td><b>Epididimis</b></td><td>Tempat pematangan dan penyimpanan sperma; mendorong sperma ke uretra saat ejakulasi via kontraksi otot polos</td></tr>
+      <tr><td><b>Penis</b></td><td>Mentransfer sperma ke vagina saat koitus; saluran keluar urin</td></tr>
+      <tr><td><b>Saluran Deferens</b></td><td>Menyimpan sperma dan mendorong ke uretra saat ejakulasi</td></tr>
+    </table>
+    <b class="kisi-tag">STRUKTUR SEL SPERMA & FUNGSINYA</b>
+    <table>
+      <tr><th>Bagian</th><th>Fungsi</th></tr>
+      <tr><td><b>Kepala</b></td><td>Berisi inti (DNA/materi genetik) + akrosom (enzim hyaluronidase & proteinase untuk menembus sel telur)</td></tr>
+      <tr><td><b>Bagian Tengah</b></td><td>Berisi mitokondria → menghasilkan energi (ATP) untuk pergerakan ekor</td></tr>
+      <tr><td><b>Ekor (Flagela)</b></td><td>Berbentuk cambuk → membantu pergerakan sperma menuju sel telur</td></tr>
+    </table>
+    <div class="highlight">Sperma dihasilkan ±300 juta/hari; di dalam saluran reproduksi perempuan dapat hidup ±18–48 jam.</div>
+  </div>
+</div>
+
+<!-- 39 -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggleCard(this)">
+    <span class="topic-num">39</span>
+    <span class="topic-title">Fungsi Ovarium, Tuba Falopi, Uterus</span>
+    <span class="topic-arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <table>
+      <tr><th>Organ</th><th>Fungsi</th></tr>
+      <tr><td><b>Ovarium</b></td><td>Menghasilkan sel telur (ovum) — oogenesis; menghasilkan hormon estrogen & progesteron (juga relaksin saat hamil); terdapat folikel & korpus luteum</td></tr>
+      <tr><td><b>Tuba Falopi (Ovidukt / Saluran Telur)</b></td><td>Menyalurkan ovum dari ovarium ke uterus; tempat terjadinya <b>fertilisasi</b> (pembuahan) — biasanya di ampula tuba; memiliki fimbriae (jari-jari) yang menangkap ovum saat ovulasi</td></tr>
+      <tr><td><b>Uterus (Rahim)</b></td><td>Tempat <b>implantasi</b> (nidasi) embrio di endometrium; tempat <b>perkembangan janin</b> hingga dilahirkan; lapisan: perimetrium (luar), miometrium (tengah/otot), endometrium (dalam)</td></tr>
+      <tr><td><b>Vagina</b></td><td>Saluran keluar menstruasi; menerima penis saat koitus; jalan lahir bayi</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- 40 -->
+<div class="topic-card">
+  <div class="topic-header" onclick="toggleCard(this)">
+    <span class="topic-num">40</span>
+    <span class="topic-title">Urutan Jalur Sel Telur — Terbentuk Sampai Dilahirkan</span>
+    <span class="topic-arrow">▼</span>
+  </div>
+  <div class="topic-body">
+    <div class="info-box">
+      <b>1. OOGENESIS di Ovarium</b><br>
+      Sel telur (ovum) dibentuk di dalam folikel ovarium melalui proses meiosis → menghasilkan oosit matang.<br><br>
+      <b>2. OVULASI</b><br>
+      Folikel pecah → ovum dilepas ke rongga abdomen → ditangkap fimbriae tuba falopi.<br><br>
+      <b>3. Di TUBA FALOPI (Ovidukt)</b><br>
+      Ovum bergerak menuju uterus. Jika bertemu sperma di ampula → terjadi <b>FERTILISASI</b> → membentuk zigot.<br><br>
+      <b>4. PEMBELAHAN ZIGOT</b><br>
+      Zigot membelah sambil bergerak menuju uterus → menjadi morula → blastosit.<br><br>
+      <b>5. NIDASI / IMPLANTASI di Uterus</b><br>
+      Blastosit menempel dan tertanam di endometrium (dinding rahim).<br><br>
+      <b>6. PERKEMBANGAN EMBRIO → JANIN di Uterus</b><br>
+      Tumbuh dan berkembang selama ±9 bulan (40 minggu) di uterus; plasenta terbentuk untuk nutrisi janin.<br><br>
+      <b>7. PERSALINAN (LAHIR)</b><br>
+      Kontraksi miometrium uterus → janin keluar melalui vagina (jalan lahir).
+    </div>
+    <div class="highlight">Jika fertilisasi tidak terjadi → ovum luruh bersama endometrium → <b>MENSTRUASI</b>.</div>
+  </div>
+</div>
+
+</div><!-- end rangkuman -->
+
+<!-- ===================== SOAL ===================== -->
+<div id="soal" class="section">
+
+<div class="score-bar">
+  <div>
+    <div class="score-num" id="scoreNum">0/40</div>
+    <div class="score-label">Soal dijawab benar</div>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  <button class="btn-all-check" onclick="checkAll()">Cek Semua Jawaban</button>
+</div>
+
+<div id="soal-container"></div>
+
+</div><!-- end soal -->
+</div><!-- end content -->
+
+<script>
+// ===== TOGGLE CARDS =====
+function toggleCard(header) {
+  const card = header.parentElement;
+  card.classList.toggle('open');
+}
+
+// ===== TABS =====
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ===== SOAL DATA =====
+const soalData = [
+  // --- SISTEM PERNAPASAN ---
+  {q:"Berikut fungsi yang tepat dari rongga hidung adalah...", opts:["A. Tempat pertukaran gas O₂ dan CO₂","B. Menyaring, menghangatkan, dan melembapkan udara sebelum masuk paru","C. Menghasilkan surfaktan agar alveolus tetap lembap","D. Memompa udara ke paru-paru saat inspirasi","E. Menyimpan cadangan oksigen untuk metabolisme"], ans:1, ex:"Rongga hidung berfungsi menyaring (dengan rambut & lendir), menghangatkan, dan melembapkan udara. Alveolus tempat pertukaran gas; diafragma yang memompa udara."},
+  {q:"Pada proses inspirasi pernapasan dada, urutan yang benar adalah...", opts:["A. Otot antar rusuk luar relaksasi → tulang rusuk naik → rongga dada membesar","B. Diafragma kontraksi → mendatar → tekanan meningkat → udara masuk","C. Otot antar rusuk luar kontraksi → tulang rusuk terangkat → rongga dada membesar → udara masuk","D. Otot antar rusuk dalam kontraksi → tulang rusuk turun → udara masuk","E. Diafragma relaksasi → rongga dada membesar → udara masuk"], ans:2, ex:"Inspirasi dada: otot antar rusuk luar kontraksi → tulang rusuk naik → rongga dada besar → tekanan turun → udara masuk."},
+  {q:"Volume udara tambahan yang dapat dihirup kuat-kuat setelah inspirasi normal disebut...", opts:["A. Volume residu","B. Volume tidal","C. Volume cadangan ekspirasi","D. Volume cadangan inspirasi","E. Kapasitas vital"], ans:3, ex:"Volume Cadangan Inspirasi (VCI) ≈ 3.000 mL adalah udara ekstra yang bisa dihirup setelah inspirasi normal."},
+  {q:"Faktor yang menyebabkan frekuensi pernapasan meningkat saat berolahraga adalah...", opts:["A. Kadar O₂ darah meningkat drastis","B. Suhu tubuh menurun sehingga metabolisme melambat","C. Laju metabolisme meningkat → kadar CO₂ darah naik → merangsang pusat napas","D. Volume tidal berkurang sehingga paru bekerja ekstra","E. Diafragma mengalami kekakuan otot"], ans:2, ex:"Aktivitas fisik → metabolisme ↑ → CO₂ ↑ → medula oblongata merangsang otot napas → frekuensi napas naik."},
+  {q:"Perbedaan utama antara TBC dan asma adalah...", opts:["A. TBC disebabkan virus, asma disebabkan bakteri","B. TBC menular melalui droplet udara dan disebabkan bakteri; asma tidak menular dan akibat hipersensitivitas saluran napas","C. TBC menyerang bronkus; asma menyerang alveolus","D. Asma menyebabkan kerusakan alveolus permanen; TBC tidak","E. Keduanya disebabkan infeksi bakteri yang sama"], ans:1, ex:"TBC = bakteri Mycobacterium tuberculosis, menular. Asma = hipersensitivitas/alergi bronkus, tidak menular."},
+
+  // --- SISTEM PEREDARAN DARAH ---
+  {q:"Ciri khas eritrosit yang mendukung fungsinya sebagai pengangkut oksigen adalah...", opts:["A. Memiliki inti sel besar untuk sintesis hemoglobin","B. Berumur panjang (>1 tahun) sehingga tidak perlu diperbarui","C. Berbentuk bikonkaf dan tidak berinti sehingga luas permukaan lebar dan banyak ruang untuk hemoglobin","D. Mengandung enzim pembekuan darah","E. Bersifat amoeboid untuk menangkap kuman"], ans:2, ex:"Eritrosit bikonkaf + tidak berinti → luas permukaan maksimal untuk difusi O₂, dan lebih banyak hemoglobin."},
+  {q:"Fungsi leukosit jenis limfosit B dalam sistem imun adalah...", opts:["A. Memfagosit bakteri secara langsung","B. Melepaskan histamin saat alergi","C. Membentuk antibodi spesifik terhadap antigen","D. Menyimpan trombosit cadangan","E. Mengangkut CO₂ dari jaringan ke paru"], ans:2, ex:"Limfosit B → plasma sel → menghasilkan antibodi. Limfosit T → mematikan sel terinfeksi virus."},
+  {q:"Pada proses pembekuan darah, urutan yang tepat adalah...", opts:["A. Fibrinogen → Fibrin → Trombin → Trombokinase","B. Trombosit pecah → Trombokinase → Protrombin → Trombin → Fibrinogen → Fibrin","C. Trombin → Trombokinase → Fibrinogen → Fibrin","D. Fibrinogen → Protrombin → Trombin → Trombokinase → Fibrin","E. Trombokinase → Trombin → Protrombin → Fibrin"], ans:1, ex:"Urutan: Trombosit pecah → trombokinase + Ca²⁺ + Vit K → protrombin jadi trombin → fibrinogen jadi fibrin."},
+  {q:"Seseorang bergolongan darah A memiliki...", opts:["A. Antigen A dan B; tidak punya antibodi","B. Antigen B; antibodi anti-A","C. Antigen A; antibodi anti-B (di plasma)","D. Tidak punya antigen; punya antibodi anti-A dan anti-B","E. Antigen A dan B; antibodi anti-A"], ans:2, ex:"Gol. A: antigen A di eritrosit, antibodi anti-B di plasma darah."},
+  {q:"Ciri yang HANYA dimiliki pembuluh arteri dan tidak dimiliki vena adalah...", opts:["A. Mengangkut darah kaya oksigen","B. Memiliki dinding yang tebal dengan banyak lapisan otot polos dan bersifat elastis","C. Memiliki katup untuk mencegah aliran balik darah","D. Letaknya dekat permukaan kulit sehingga mudah terlihat","E. Mengangkut darah dari paru-paru ke jantung"], ans:1, ex:"Arteri: dinding tebal + elastis + banyak otot polos. Vena punya katup; arteri umumnya tidak (kecuali katup aorta)."},
+  {q:"Ventrikel kiri jantung berdinding paling tebal karena berfungsi...", opts:["A. Menerima darah dari paru-paru","B. Memompa darah ke paru-paru untuk pertukaran gas","C. Memompa darah ke seluruh tubuh (sirkulasi sistemik) dengan tekanan tinggi","D. Mencegah darah kembali ke atrium","E. Menyimpan darah cadangan saat denyut jantung melemah"], ans:2, ex:"Ventrikel kiri memompa ke seluruh tubuh via aorta → butuh tekanan besar → dinding paling tebal."},
+
+  // --- SISTEM EKSKRESI ---
+  {q:"Pasangan organ ekskresi dan zat sisa yang dikeluarkannya yang BENAR adalah...", opts:["A. Ginjal → CO₂ dan H₂O","B. Hati → urin","C. Kulit → keringat (air, NaCl, urea)","D. Paru-paru → amonia","E. Kulit → empedu"], ans:2, ex:"Kulit → keringat mengandung air, NaCl, sedikit urea. Ginjal → urin. Paru-paru → CO₂ + H₂O. Hati → empedu + ubah amonia jadi urea."},
+  {q:"Fungsi bagian glomerulus pada nefron ginjal adalah...", opts:["A. Menyerap kembali glukosa dan asam amino ke darah","B. Menambahkan zat sisa metabolisme ke dalam cairan tubulus","C. Menyaring darah: protein dan sel darah tetap di kapiler, air dan zat kecil masuk ke kapsul Bowman","D. Mengatur konsentrasi air dengan hormon ADH","E. Tempat produksi hormon renin"], ans:2, ex:"Glomerulus: filtrasi. Protein & sel darah tidak tersaring (terlalu besar). Hasilnya: urin primer."},
+  {q:"Uji benedict dilakukan pada urine untuk mendeteksi...", opts:["A. Protein (indikasi kerusakan glomerulus)","B. Glukosa — hasil positif menunjukkan warna merah bata/oranye","C. Keton (tanda diabetes ketoasidosis)","D. Sel darah merah dalam urin","E. Bakteri dalam urin"], ans:1, ex:"Benedict: mendeteksi gula pereduksi (glukosa). Hasil normal = biru (negatif). Merah bata = positif → diabetes/kerusakan ginjal."},
+  {q:"Penyebab utama biang keringat (miliaria) adalah...", opts:["A. Infeksi bakteri Staphylococcus pada folikel rambut","B. Kekurangan vitamin D sehingga kulit menjadi sensitif","C. Saluran kelenjar keringat tersumbat → keringat terperangkap di bawah kulit → peradangan","D. Alergi terhadap deterjen atau sabun mandi","E. Kurangnya produksi sebum oleh kelenjar sebasea"], ans:2, ex:"Biang keringat: sumbatan saluran kelenjar keringat (cuaca panas + lembap) → keringat tidak keluar → bintil merah gatal."},
+
+  // --- SISTEM SARAF ---
+  {q:"Nodus Ranvier berfungsi untuk...", opts:["A. Menghasilkan neurotransmiter pada celah sinaps","B. Mempercepat penghantaran impuls melalui konduksi saltatori (impuls melompat dari nodus ke nodus)","C. Menyerap oksigen untuk metabolisme sel saraf","D. Menghubungkan akson dengan dendrit secara langsung","E. Menyimpan neurotransmiter dalam vesikel sinaptik"], ans:1, ex:"Nodus Ranvier = celah di mielin. Impuls melompat antar nodus (saltatori) → lebih cepat daripada merambat setiap titik."},
+  {q:"Proses yang terjadi di sinapsis saat impuls sampai di ujung akson adalah...", opts:["A. Ion Na⁺ masuk ke sel postsinaps secara langsung","B. Vesikel sinaptik melepaskan neurotransmiter ke celah sinaps → berdifusi ke reseptor membran postsinaps","C. Listrik mengalir langsung dari akson ke dendrit","D. Sel Schwann menghasilkan mielin baru untuk memperkuat sinyal","E. Asetilkolin diubah menjadi energi ATP di celah sinaps"], ans:1, ex:"Sinapsis: ujung akson melepas neurotransmiter ke celah → berdifusi → terikat reseptor postsinaps → melanjutkan impuls."},
+  {q:"Contoh gerak refleks yang BENAR adalah...", opts:["A. Mengambil pensil yang jatuh dari meja","B. Menendang bola ketika diminta oleh teman","C. Menarik tangan saat tidak sengaja menyentuh wajan panas","D. Menulis jawaban ujian dengan cepat","E. Memilih baju yang akan dipakai ke sekolah"], ans:2, ex:"Gerak refleks: tidak disadari, otomatis, cepat. Menarik tangan dari panas adalah refleks nosiseptif yang melibatkan sumsum tulang belakang."},
+  {q:"Lobus cerebrum yang bertanggung jawab atas pemrosesan informasi penglihatan adalah...", opts:["A. Lobus frontal","B. Lobus parietal","C. Lobus temporal","D. Lobus oksipital","E. Lobus limbik"], ans:3, ex:"Lobus oksipital = area visual korteks otak. Frontal = kepribadian/gerak. Parietal = sensorik. Temporal = pendengaran/memori."},
+  {q:"Fungsi serebelum (otak kecil) yang TEPAT adalah...", opts:["A. Mengontrol kesadaran dan kepribadian manusia","B. Mengatur denyut jantung dan tekanan darah","C. Mempertahankan tonus otot, mengkoordinasikan gerakan, dan mengontrol keseimbangan","D. Mengolah informasi visual dari mata","E. Menghasilkan hormon melatonin untuk mengatur tidur"], ans:2, ex:"Serebelum: koordinasi gerak otot, tonus otot, dan keseimbangan posisi tubuh. Kerusakannya → ataksia."},
+  {q:"Meningitis adalah penyakit yang disebabkan oleh...", opts:["A. Kerusakan sel saraf motorik di sumsum tulang belakang","B. Peradangan selaput pembungkus otak dan sumsum tulang belakang (meningen)","C. Berkurangnya produksi neurotransmiter dopamin","D. Penyumbatan arteri di otak yang menyebabkan sel saraf mati","E. Gangguan impuls berlebihan di otak yang menyebabkan kejang berulang"], ans:1, ex:"Meningitis = inflamasi meningen (lapisan pelindung otak/sumsum tulang belakang), disebabkan bakteri/virus."},
+
+  // --- ALAT INDERA ---
+  {q:"Fungsi lensa mata dalam proses penglihatan adalah...", opts:["A. Menerima rangsang cahaya dan mengubahnya menjadi impuls saraf","B. Mengatur jumlah cahaya yang masuk ke mata","C. Memfokuskan cahaya ke titik tepat di retina (akomodasi)","D. Melindungi bola mata dari benda asing","E. Menghasilkan cairan untuk menjaga kelembapan bola mata"], ans:2, ex:"Lensa: memfokuskan (akomodasi) — cembung untuk objek dekat, pipih untuk objek jauh. Retina yang menerima rangsang cahaya."},
+  {q:"Reseptor pendeteksi bau pada hidung disebut...", opts:["A. Papila olfaktori","B. Sel pengecap (gustatory cell)","C. Sel olfaktori di epitel olfaktori rongga hidung","D. Reseptor nosiseptif","E. Sel ganglion olfaktori"], ans:2, ex:"Reseptor bau = sel olfaktori di lapisan epitel olfaktori (bagian atap rongga hidung). Molekul bau → sel olfaktori → impuls ke otak."},
+  {q:"Rasa pahit paling dominan dirasakan pada bagian mana dari lidah?", opts:["A. Ujung lidah","B. Tepi samping lidah","C. Tengah lidah","D. Pangkal/belakang lidah","E. Bagian bawah lidah"], ans:3, ex:"Peta rasa klasik: manis (ujung), asin (ujung+tepi depan), asam (tepi samping), pahit (pangkal/belakang)."},
+  {q:"Bagian telinga yang berperan dalam keseimbangan dinamis (saat kepala berputar) adalah...", opts:["A. Koklea","B. Membran timpani","C. Tulang sanggurdi (stapes)","D. Kanalis semisirkularis","E. Organ Corti"], ans:3, ex:"Kanalis semisirkularis (3 saluran semi-lingkar) berisi endolimfe → bergerak saat kepala berputar → keseimbangan dinamis. Koklea untuk pendengaran."},
+  {q:"Urutan yang benar dalam penghantaran getaran suara di telinga adalah...", opts:["A. Koklea → membran timpani → tulang pendengaran → daun telinga","B. Daun telinga → saluran telinga → membran timpani → tulang pendengaran (maleus-inkus-stapes) → koklea (organ Corti)","C. Membran timpani → saluran telinga → koklea → tulang pendengaran","D. Daun telinga → koklea → membran timpani → tulang pendengaran","E. Tulang pendengaran → membran timpani → daun telinga → koklea"], ans:1, ex:"Suara: daun telinga → saluran telinga → membran timpani bergetar → maleus → inkus → stapes → koklea → organ Corti → impuls saraf."},
+
+  // --- SISTEM GERAK ---
+  {q:"Fungsi rangka manusia yang berkaitan dengan sistem peredaran darah adalah...", opts:["A. Sebagai alat gerak aktif bersama otot","B. Tempat pembentukan sel darah (hemopoiesis) di sumsum tulang merah","C. Menyimpan cadangan lemak untuk energi","D. Menghasilkan hormon pertumbuhan tulang","E. Melindungi saraf kranial dari benturan"], ans:1, ex:"Sumsum tulang merah (di tulang spons/ujung tulang panjang) = tempat pembentukan sel darah merah, trombosit, leukosit."},
+  {q:"Tulang yang termasuk rangka aksial adalah...", opts:["A. Femur dan humerus","B. Tulang pelvis dan klavikula","C. Tengkorak, tulang belakang (vertebra), tulang dada, dan tulang rusuk","D. Radius, ulna, dan karpal","E. Tarsal, metatarsal, dan falang kaki"], ans:2, ex:"Rangka aksial: tengkorak, sternum (dada), kosta (rusuk), vertebra (tulang belakang). Rangka apendikular = anggota gerak."},
+  {q:"Tulang vertebra di daerah pinggang (5 ruas terbesar) disebut...", opts:["A. Vertebra serviks","B. Vertebra torak","C. Vertebra lumbar","D. Sakrum","E. Koksigis"], ans:2, ex:"Lumbar (L1-L5) di daerah pinggang, ruas terbesar vertebra karena menanggung beban tubuh terbesar."},
+  {q:"Sendi yang memungkinkan gerakan ke segala arah (paling bebas) adalah...", opts:["A. Sendi engsel","B. Sendi putar","C. Sendi pelana","D. Sendi peluru","E. Sendi luncur"], ans:3, ex:"Sendi peluru (ball and socket) = gerakan ke segala arah. Contoh: bahu dan pinggul."},
+  {q:"Perbedaan utama antara otot lurik dan otot polos adalah...", opts:["A. Otot lurik tidak berinti; otot polos berinti banyak","B. Otot lurik dikendalikan secara sadar (volunter) dan bergaris melintang; otot polos involunter dan tidak bergaris","C. Otot lurik hanya ada di jantung; otot polos di rangka","D. Otot polos bekerja lebih cepat dan lebih kuat dari otot lurik","E. Keduanya involunter tetapi otot lurik lebih lambat"], ans:1, ex:"Otot lurik: volunter, bergaris melintang, inti di tepi. Otot polos: involunter, tidak bergaris, inti di tengah. Keduanya berbeda."},
+  {q:"Yang dimaksud dengan dislokasi sendi adalah...", opts:["A. Patahnya tulang akibat trauma atau benturan","B. Peradangan pada jaringan sendi","C. Pergeseran/perpindahan tulang dari posisi normalnya di dalam sendi","D. Tertariknya ligamen akibat gerakan tiba-tiba","E. Pengapuran pada permukaan tulang rawan sendi"], ans:2, ex:"Dislokasi = pergeseran tulang dari posisinya di sendi. Berbeda dengan fraktur (tulang patah) atau terkilir (ligamen tertarik)."},
+
+  // --- REPRODUKSI ---
+  {q:"Fungsi skrotum pada sistem reproduksi laki-laki adalah...", opts:["A. Tempat produksi hormon testosteron","B. Menghasilkan cairan alkalis untuk menetralisasi asam vagina","C. Kantung pembungkus testis yang mengatur suhu testis agar lebih dingin dari suhu tubuh, optimal untuk spermatogenesis","D. Menyimpan sperma matang selama beberapa bulan","E. Menyalurkan sperma dari epididimis ke uretra"], ans:2, ex:"Skrotum = kantung testis di luar tubuh. Suhu testis harus ±2°C lebih dingin dari tubuh agar spermatogenesis berjalan optimal. Otot dartos & kremaster mengatur suhu."},
+  {q:"Bagian sel sperma yang mengandung enzim untuk menembus sel telur adalah...", opts:["A. Mitokondria di bagian tengah","B. Ekor (flagela)","C. Akrosom di bagian kepala","D. Membran plasma","E. Inti sel di bagian kepala"], ans:2, ex:"Akrosom di kepala sperma berisi enzim hyaluronidase & proteinase yang membantu sperma menembus lapisan pelindung ovum."},
+  {q:"Fertilisasi pada manusia umumnya terjadi di...", opts:["A. Ovarium, segera setelah ovulasi","B. Tuba falopi (ovidukt), khususnya di bagian ampula","C. Uterus (rahim), di lapisan endometrium","D. Vagina, saat sperma pertama kali masuk","E. Serviks (leher rahim)"], ans:1, ex:"Fertilisasi (pembuahan) terjadi di tuba falopi bagian ampula. Ovum yang dibuahi kemudian bergerak ke uterus untuk implantasi."},
+  {q:"Fungsi ovarium pada sistem reproduksi perempuan adalah...", opts:["A. Tempat implantasi embrio dan perkembangan janin","B. Menyalurkan ovum dari ovarium ke rahim dan tempat fertilisasi","C. Menghasilkan sel telur (ovum) dan hormon estrogen serta progesteron","D. Saluran keluar menstruasi dan jalan lahir bayi","E. Mengatur siklus menstruasi melalui produksi FSH dan LH"], ans:2, ex:"Ovarium: oogenesis (menghasilkan ovum) + endokrin (estrogen & progesteron). Tuba falopi: menyalurkan + tempat fertilisasi."},
+  {q:"Urutan perkembangan sel telur yang benar dari ovarium hingga bayi lahir adalah...", opts:["A. Oogenesis → ovulasi → implantasi → fertilisasi → perkembangan janin → persalinan","B. Ovulasi → fertilisasi → oogenesis → implantasi → perkembangan janin → persalinan","C. Oogenesis (ovarium) → ovulasi → menuju tuba falopi → fertilisasi → pembelahan zigot → implantasi di uterus → perkembangan janin → persalinan","D. Oogenesis → implantasi → ovulasi → fertilisasi → persalinan","E. Fertilisasi → oogenesis → ovulasi → implantasi → perkembangan janin → persalinan"], ans:2, ex:"Urutan: oogenesis (ovarium) → ovulasi → ditangkap tuba falopi → fertilisasi (ampula) → zigot membelah → blastosit → implantasi di endometrium → janin berkembang → persalinan."},
+  {q:"Lapisan dinding uterus yang luruh saat menstruasi adalah...", opts:["A. Perimetrium","B. Miometrium","C. Endometrium","D. Serosa","E. Amnion"], ans:2, ex:"Endometrium = lapisan paling dalam uterus. Menebal di bawah pengaruh estrogen & progesteron. Luruh saat tidak terjadi kehamilan → menstruasi."},
+
+  // --- CAMPURAN TOPIK PENTING ---
+  {q:"Sel yang berperan dalam pertukaran gas di alveolus dan bersifat amoeboid untuk menangkap kuman adalah...", opts:["A. Eritrosit","B. Trombosit","C. Makrofag","D. Limfosit B","E. Sel epitel alveolus"], ans:2, ex:"Makrofag (dari monosit/leukosit) tersebar di alveolus, bersifat amoeboid (berkaki semu) → fagositosis kuman & kotoran yang masuk paru."},
+  {q:"Proses reabsorpsi glukosa di ginjal terjadi di bagian...", opts:["A. Glomerulus","B. Kapsul Bowman","C. Tubulus distal","D. Tubulus proksimal","E. Lengkung Henle"], ans:3, ex:"Tubulus proksimal: reabsorpsi glukosa, asam amino, dan ion Na⁺ kembali ke darah — itulah mengapa urine normal tidak mengandung glukosa."},
+  {q:"Konduksi saltatori pada penghantaran impuls terjadi karena...", opts:["A. Neurotransmiter melompat dari satu sinapsis ke sinapsis lain","B. Impuls berpindah melalui celah sinaps secara listrik langsung","C. Impuls melompat dari satu nodus Ranvier ke nodus Ranvier berikutnya sepanjang akson bermielin","D. Sel Schwann mengaktifkan impuls secara berurutan","E. Ion Na⁺ mengalir di dalam selubung mielin"], ans:2, ex:"Konduksi saltatori: impuls melompat nodus ke nodus di akson bermielin → sangat cepat (hingga 120 m/s). Mielin mengisolasi sehingga impuls hanya terjadi di nodus."},
+  {q:"Tulang yang berfungsi sebagai 'penopang kepala' dan memungkinkan gerakan mengangguk adalah...", opts:["A. C2 (aksis)","B. C1 (atlas)","C. C3 (vertebra serviks ketiga)","D. Vertebra torak pertama (T1)","E. Tulang dada (sternum)"], ans:1, ex:"Atlas (C1) menopang tengkorak dan memungkinkan gerakan mengangguk (fleksi-ekstensi kepala). Aksis (C2) memungkinkan rotasi kepala."},
+  {q:"Pernyataan yang benar tentang epididimis adalah...", opts:["A. Menghasilkan hormon testosteron","B. Tempat produksi sperma melalui spermatogenesis","C. Tempat pematangan dan penyimpanan sperma; mendorong sperma ke uretra saat ejakulasi","D. Menghasilkan cairan bersifat basa untuk menetralisasi asam","E. Berfungsi sebagai kantung pelindung testis"], ans:2, ex:"Epididimis: tempat sperma matang + disimpan + didorong ke saluran deferens saat ejakulasi. Testis yang memproduksi sperma."},
+  {q:"Jika uji biuret pada sampel urine menunjukkan perubahan warna menjadi ungu/violet, hal ini mengindikasikan...", opts:["A. Urine mengandung glukosa — tanda diabetes","B. Urine mengandung protein — tanda kerusakan glomerulus / nefritis","C. Urine mengandung asam urat berlebih","D. Urine normal dan tidak bermasalah","E. Urine mengandung keton — tanda ketoasidosis"], ans:1, ex:"Biuret positif = warna ungu = ada protein dalam urine (proteinuria). Normal: tidak ada protein (sudah direabsorpsi di tubulus proksimal)."},
+];
+
+// ===== RENDER SOAL =====
+function renderSoal() {
+  const container = document.getElementById('soal-container');
+  let html = '';
+  soalData.forEach((s, i) => {
+    html += `<div class="soal-item" id="soal-${i}">
+      <div class="soal-q"><span class="soal-num">${String(i+1).padStart(2,'0')}.</span>${s.q}</div>
+      <div class="options">`;
+    const labels = ['A','B','C','D','E'];
+    s.opts.forEach((opt, j) => {
+      html += `<div class="opt" id="opt-${i}-${j}" onclick="selectOpt(${i},${j})">
+        <span class="opt-label">${labels[j]}</span>
+        <span>${opt.replace(/^[A-E]\.\s*/,'')}</span>
+      </div>`;
+    });
+    html += `</div>
+      <div class="soal-actions">
+        <button class="btn-check" onclick="checkOne(${i})">Cek Jawaban</button>
+        <button class="btn-reset" onclick="resetOne(${i})">Reset</button>
+      </div>
+      <div class="answer-reveal" id="reveal-${i}">
+        <strong>✓ Jawaban: ${labels[s.ans]}</strong><br>${s.ex}
+      </div>
+    </div>`;
+  });
+  container.innerHTML = html;
+}
+
+// ===== STATE =====
+const selected = {};
+
+function selectOpt(qi, oi) {
+  if (selected[qi] !== undefined && document.getElementById(`reveal-${qi}`).classList.contains('show')) return;
+  selected[qi] = oi;
+  const labels = ['A','B','C','D','E'];
+  for(let j=0;j<5;j++){
+    const el = document.getElementById(`opt-${qi}-${j}`);
+    if(!el) continue;
+    el.classList.remove('selected','correct','wrong');
+    const label = el.querySelector('.opt-label');
+    if(label){ label.style.color = ''; }
+  }
+  const chosen = document.getElementById(`opt-${qi}-${oi}`);
+  if(chosen){ chosen.classList.add('selected'); }
+}
+
+function checkOne(qi) {
+  if(selected[qi] === undefined) { alert('Pilih jawaban dulu!'); return; }
+  const s = soalData[qi];
+  const labels = ['A','B','C','D','E'];
+  for(let j=0;j<5;j++){
+    const el = document.getElementById(`opt-${qi}-${j}`);
+    if(!el) continue;
+    el.classList.remove('selected');
+    if(j === s.ans){ el.classList.add('correct'); }
+    else if(j === selected[qi]){ el.classList.add('wrong'); }
+  }
+  document.getElementById(`reveal-${qi}`).classList.add('show');
+  updateScore();
+}
+
+function resetOne(qi) {
+  delete selected[qi];
+  const labels = ['A','B','C','D','E'];
+  for(let j=0;j<5;j++){
+    const el = document.getElementById(`opt-${qi}-${j}`);
+    if(!el) continue;
+    el.classList.remove('selected','correct','wrong');
+  }
+  document.getElementById(`reveal-${qi}`).classList.remove('show');
+  updateScore();
+}
+
+function checkAll() {
+  soalData.forEach((_,i) => { if(selected[i] !== undefined) checkOne(i); });
+  updateScore();
+}
+
+function updateScore() {
+  let correct = 0;
+  soalData.forEach((s,i) => {
+    if(document.getElementById(`reveal-${i}`).classList.contains('show') && selected[i] === s.ans) correct++;
+  });
+  document.getElementById('scoreNum').textContent = `${correct}/40`;
+  document.getElementById('progressFill').style.width = `${(correct/40)*100}%`;
+}
+
+renderSoal();
+</script>
+</body>
+</html>
